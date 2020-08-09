@@ -1,0 +1,19 @@
+<h2>User Login</h2>
+
+<!-- # Use form-tag when not interacting with model -->
+<%= form_tag login_path do %>
+
+  <%= label_tag :email %>
+  <%= email_field_tag :email %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+
+  <%= submit_tag "Login" %>
+
+<% end %>
+
+<% if flash[:error] %>
+  <br>
+  <strong><%= flash[:error] %></strong>
+<% end %>

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
+  # CREATE -------------------------------------------
   def new
     @user = User.new
-  end
+  end # new
 
   def create
     @user = User.create user_params # Strong params
@@ -10,12 +11,11 @@ class UsersController < ApplicationController
     # Check if the creation was successful
     if @user.persisted?
       session[:user_id] = @user.id 
-      redirect_to(home_path)
+      redirect_to(posts_path)
     else
       render :new
     end
-
-  end
+  end # create
 
   def index
   end
@@ -37,6 +37,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+  end # user_params
 
 end

@@ -1,0 +1,14 @@
+<%= form_for @post do |f| %>
+  
+  <%= f.label :image, "Upload image" %>
+  <%= f.text_field :image %>
+  
+  <%= f.label :description, "Add description" %>
+  <%= f.text_field :description %>
+  
+  <%= f.label :brand, "Select brand" %>
+  <%= f.select :brand, [["Li-Ning", "Li-Ning"], ["Air Jordan", "Air Jordan"], ["Nike","Nike"], ["Adidas", "Adidas"], ["Reebok", "Reebod"], ["Converse", "Converse"], ["Others", "Others"]] %>
+
+  <%= f.submit %>
+
+<% end %>

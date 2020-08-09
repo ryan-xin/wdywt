@@ -1,0 +1,31 @@
+<h2>All Posts</h2>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= image_tag post.image, alt: post.description, class: "post_image" %><br>
+      <strong><%= post.user.name %></strong>
+      <%= post.description %><br>
+
+      <% if post.comments.count >= 3 %>
+        <%= link_to "View all #{post.comments.count} comments", post_path(post.id) %><br>
+      <% end %>
+
+      <% if post.comments.first.present? %>
+        <strong><%= post.comments.first.user.name %></strong>
+        <%= post.comments.first.content %><br>
+      <% end %>
+
+      <% if post.comments.second.present? %>
+        <strong><%= post.comments.second.user.name %></strong>
+        <%= post.comments.second.content %>
+      <% end %>
+
+      <% if @current_user.id == post.user_id %>
+        <%= link_to "Edit", edit_post_path(post.id) %>
+        <%= link_to "Delete", post_path(post.id), method: "delete" %>
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,13 @@
+<%= image_tag @post.image, alt: @post.description, class: "post_image" %><br>
+<strong><%= @post.user.name %></strong>
+<%= @post.description %><br>
+
+<% @post.comments.each do |comment| %>
+  <strong><%= comment.user.name %></strong>
+  <%= comment.content %><br>
+<% end %>
+
+<% if @current_user.id == @post.user_id %>
+  <%= link_to "Edit", edit_post_path(@post.id) %>
+  <%= link_to "Delete", post_path(@post.id), method: "delete" %>
+<% end %>

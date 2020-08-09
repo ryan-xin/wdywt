@@ -113,7 +113,7 @@ p3.comments << c1
 p4.comments << c3
 p5.comments << c7
 
-u1.comments << c1 << c3 << c7
+u1.comments << c1 << c3
 u2.comments << c4 << c5
-u3.comments << c6
+u3.comments << c6 << c7
 u4.comments << c2

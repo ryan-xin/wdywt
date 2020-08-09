@@ -21,13 +21,22 @@ class UsersController < ApplicationController
   end
 
   def show
-  end
-
+    @user = User.find params[:id]
+  end # show
+    
   def edit
-  end
+    @user = User.find params[:id]
+  end # edit
 
   def update
-  end
+    @user = User.find params[:id]
+    if @user.id != @current_user.id
+      redirect_to(user_path(params[:id]))
+      return
+    end
+    @user.update user_params_edit
+    redirect_to(user_path(params[:id]))    
+  end # update
 
   def destroy
   end
@@ -38,5 +47,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end # user_params
+
+  def user_params_edit
+    params.require(:user).permit(:image, :name, :email, :password, :password_confirmation, :bio)
+  end # user_params_edit
 
 end

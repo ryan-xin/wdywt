@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
     # If not logged in redirect to login page
     redirect_to(login_path) unless @current_user.present?
   end # check_if_logged_in
+
+
   
 
 end

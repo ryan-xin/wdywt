@@ -12,6 +12,12 @@
 
 <% end %>
 
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.text_field :content %>
+  <%= f.submit ("Comment") %>
+<% end %>
+
 <% if @current_user.id == @post.user_id %>
   <%= link_to "Edit", edit_post_path(@post.id) %>
   <%= link_to "Delete", post_path(@post.id), method: "delete" %>

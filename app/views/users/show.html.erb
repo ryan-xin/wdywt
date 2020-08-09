@@ -1,5 +1,8 @@
 <h1><%= @user.name %></h1>
 
+<!--# helpers check_user_image -->
+<%= check_user_image(@user) %>
+
 <%= image_tag @user.image, alt: "User Image" %>
 
 <% if @user.id == @current_user.id %>

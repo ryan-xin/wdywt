@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create comment_params
     @current_user.comments << @comment
-    redirect_to(posts_path)
+    
+    redirect_to(post_path(@comment.post.id))
   end # create
 
   def index

@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # READ -------------------------------------------
   def index
     @posts = Post.all
+    @comment = Comment.new
   end # index
 
   def show
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
     redirect_to(posts_path)
   end
 
-  
+
   private
 
   def post_params

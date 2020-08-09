@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "pages#welcome"
   get "/home" => "pages#home"
 
-  # Session Routes ################################
+  # Session Routes -------------------------------------------
   
   # Login Form
   get "/login" => "session#new"
@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   # Logout, delete session
   delete "/login" => "session#destroy"
   
-  # USER CRUD ######################################
+  # USER CRUD -------------------------------------------
   resources :users # Create users route
 
-  # POST CRUD ######################################
+  # POST CRUD -------------------------------------------
   resources :posts
+
+  # COMMENT CRUD -------------------------------------------
+  resources :comments
   
 end

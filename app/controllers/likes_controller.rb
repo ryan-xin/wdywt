@@ -42,6 +42,6 @@ class LikesController < ApplicationController
     end      
     # Comment on index page stay at index page
     redirect_to(request.referer + '#' + params[:post_id])
-  end
+  end # destroy
 
 end

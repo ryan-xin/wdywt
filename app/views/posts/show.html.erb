@@ -6,7 +6,7 @@
 
 <strong><%= @post.user.name %></strong><br>
 
-<%= @post.created_at.to_formatted_s(:short) %><br>
+<%= @post.created_at.strftime("%e %b %Y %l:%M %p") %><br>
 
 <strong><%= @post.user.name %></strong>
 <%= @post.description %><br>
@@ -14,6 +14,8 @@
 <% @post.comments.each do |comment| %>
   <strong><%= comment.user.name %></strong>
   <%= comment.content %><br>
+
+  <%= comment.created_at.strftime("%e %b %Y %l:%M %p") %><br>
 
   <% if @current_user.id == comment.user_id %>
     <%= link_to "Delete", comment_path(comment.id), method: "delete" %>

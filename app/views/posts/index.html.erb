@@ -10,7 +10,7 @@
 
       <strong><%= post.user.name %></strong><br>
 
-      <%= post.created_at.to_formatted_s(:short) %><br>
+      <%= post.created_at.strftime("%e %b %Y") %><br>
 
       <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
       <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>

@@ -3,10 +3,6 @@
 
 <%= image_tag @post.image, alt: @post.description, class: "post_image" %><br>
 
-<%= check_user_image(@post.user) %>
-
-<%= link_to image_tag(@post.user.image, class: "profile_image"), user_path(@post.user_id) %>
-
 <!--# like -->
 <% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
 <% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
@@ -17,7 +13,8 @@
 
 <%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " like" : " likes" %><br>
 
-<strong><%= @post.user.name %></strong><br>
+<%= check_user_image_small(@post.user) %>
+<strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
 
 <%= @post.created_at.strftime("%e %b %Y %l:%M %p") %><br>
 

@@ -19,6 +19,4 @@ class ApplicationController < ActionController::Base
   end # check_if_logged_in
 
 
-  
-
 end

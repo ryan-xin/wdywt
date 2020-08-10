@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_like</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-85.000000, -549.000000)" fill="#FF7070">
+            <path d="M95,567.587042 C101.666667,563.365785 105,559.455495 105,555.856173 C105,550.457189 99.5228475,547.058021 95,551.945883 C90.4771525,547.058021 85,550.457189 85,555.856173 C85,559.455495 88.3333333,563.365785 95,567.587042 Z" id="icon_like"></path>
+        </g>
+    </g>
+</svg>

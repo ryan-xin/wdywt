@@ -1,10 +1,21 @@
 <%= link_to 'Back', :back %>
+<a name="start"></a><br>
 
 <%= image_tag @post.image, alt: @post.description, class: "post_image" %><br>
 
 <%= check_user_image(@post.user) %>
 
 <%= link_to image_tag(@post.user.image, class: "profile_image"), user_path(@post.user_id) %>
+
+<!--# like -->
+<% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
+<% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
+  <%= button_to "Unlike", post_like_path(@post.id, pre_liked.id), method: "delete" %>
+<% else %>
+  <%= button_to "Like", post_likes_path(@post.id), method: "post" %>
+<% end %>
+
+<%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " like" : " likes" %><br>
 
 <strong><%= @post.user.name %></strong><br>
 
@@ -25,8 +36,8 @@
   <% end %><br>
 <% end %>
 
-<!-- # Comment Field -->
 <a name="end"></a>
+<!-- # Comment Field -->
 <%= form_for @comment do |f| %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.text_field :content %>

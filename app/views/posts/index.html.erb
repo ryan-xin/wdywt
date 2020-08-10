@@ -20,6 +20,18 @@
 
       <!--# post.image & description -->
       <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
+
+      <!--# like -->
+      <% pre_liked = post.likes.find { |like| like.user_id == @current_user.id} %>
+      <% if Like.where(user_id: @current_user.id, post_id: post.id).exists? %>
+        <%= button_to "Unlike", post_like_path(post.id, pre_liked.id), method: "delete" %>
+      <% else %>
+        <%= button_to "Like", post_likes_path(post.id), method: "post" %>
+      <% end %>
+
+      <%= post.likes.count %><%= (post.likes.count) <= 1 ? " like" : " likes" %><br>
+
+      <!--# description -->
       <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
       <%= post.description %><br>
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "pages#welcome"
@@ -18,9 +19,14 @@ Rails.application.routes.draw do
   resources :users # Create users route
 
   # POST CRUD -------------------------------------------
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 
-  # COMMENT CRUD -------------------------------------------
+  # COMMENT CRUD ----------------------------------------
   resources :comments
+
+  # LIKE -----------------------------------------------
+ 
   
 end

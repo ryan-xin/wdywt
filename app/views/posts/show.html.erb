@@ -1,4 +1,13 @@
 <%= image_tag @post.image, alt: @post.description, class: "post_image" %><br>
+
+<%= check_user_image(@post.user) %>
+
+<%= link_to image_tag(@post.user.image, class: "profile_image"), user_path(@post.user_id) %>
+
+<strong><%= @post.user.name %></strong><br>
+
+<%= @post.created_at.to_formatted_s(:short) %><br>
+
 <strong><%= @post.user.name %></strong>
 <%= @post.description %><br>
 

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create comment_params
     @current_user.comments << @comment
-    
+    # TODO: when comment on index stay at index after comment; when comment on show stay at show after comment
     redirect_to(post_path(@comment.post.id))
   end # create
 

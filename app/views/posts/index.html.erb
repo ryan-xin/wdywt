@@ -3,6 +3,15 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <!--# helpers check_user_image -->
+      <%= check_user_image(post.user) %>
+
+      <%= link_to image_tag(post.user.image, class: "profile_image"), user_path(post.user_id) %>
+
+      <strong><%= post.user.name %></strong><br>
+
+      <%= post.created_at.to_formatted_s(:short) %><br>
+
       <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
       <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
       <%= post.description %><br>
@@ -19,11 +28,6 @@
       <% if post.comments.second.present? %>
         <strong><%= post.comments.second.user.name %></strong>
         <%= post.comments.second.content %>
-      <% end %>
-
-      <% if @current_user.id == post.user_id %>
-        <%= link_to "Edit", edit_post_path(post.id) %>
-        <%= link_to "Delete", post_path(post.id), method: "delete" %>
       <% end %>
 
       <%= form_for @comment do |f| %>

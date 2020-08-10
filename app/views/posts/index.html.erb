@@ -3,20 +3,28 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <!--# Adding comment anchoring point -->
+      <a name="<%= post.id %>"></a>
+
       <!--# helpers check_user_image -->
       <%= check_user_image(post.user) %>
 
+      <!--# post.user.image -->
       <%= link_to image_tag(post.user.image, class: "profile_image"), user_path(post.user_id) %>
 
+      <!--# post.user.name -->
       <strong><%= post.user.name %></strong><br>
 
+      <!--# post.created date -->
       <%= post.created_at.strftime("%e %b %Y") %><br>
 
+      <!--# post.image & description -->
       <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
       <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
       <%= post.description %><br>
 
-      <% if post.comments.count >= 3 %>
+      <!--# post.comments.link -->
+      <% if post.comments.count >= 1 %>
         <%= link_to "View all #{post.comments.count} comments", post_path(post.id) %><br>
       <% end %>
 
@@ -25,11 +33,12 @@
         <%= post.comments.first.content %><br>
       <% end %>
 
-      <% if post.comments.second.present? %>
-        <strong><%= post.comments.second.user.name %></strong>
-        <%= post.comments.second.content %>
+      <% if post.comments.last.present? && post.comments.count > 1 %>
+        <strong><%= post.comments.last.user.name %></strong>
+        <%= post.comments.last.content %>
       <% end %>
 
+      <!-- # Comment Field -->
       <%= form_for @comment do |f| %>
         <%= f.hidden_field :post_id, value: post.id %>
         <%= f.text_field :content %>

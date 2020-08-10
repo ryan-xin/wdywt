@@ -7,8 +7,20 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create comment_params
     @current_user.comments << @comment
-    # TODO: when comment on index stay at index after comment; when comment on show stay at show after comment
-    redirect_to(post_path(@comment.post.id))
+    # Check if comment on post index or post show page
+    # raise "hell"
+
+    # HTTP referral header: the previous visted URL
+    url = Rails.application.routes.recognize_path(request.referer)
+    last_action = url[:action]
+    # Comment on show page stay at show page
+    if last_action == "show"
+      redirect_to(request.referer + '#end')     
+      return
+    end      
+    # Comment on index page stay at index page
+    redirect_to(request.referer + '#' + params[:comment][:post_id])
+
   end # create
 
   def index

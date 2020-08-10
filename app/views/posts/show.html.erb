@@ -11,6 +11,7 @@
 <strong><%= @post.user.name %></strong>
 <%= @post.description %><br>
 
+<!-- # Comments -->
 <% @post.comments.each do |comment| %>
   <strong><%= comment.user.name %></strong>
   <%= comment.content %><br>
@@ -20,15 +21,17 @@
   <% if @current_user.id == comment.user_id %>
     <%= link_to "Delete", comment_path(comment.id), method: "delete" %>
   <% end %><br>
-
 <% end %>
 
+<!-- # Comment Field -->
+<a name="end"></a>
 <%= form_for @comment do |f| %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.text_field :content %>
   <%= f.submit ("Comment") %>
 <% end %>
 
+<!-- # If @current_user equals post user show "edit" & "delete" -->
 <% if @current_user.id == @post.user_id %>
   <%= link_to "Edit", edit_post_path(@post.id) %>
   <%= link_to "Delete", post_path(@post.id), method: "delete" %>

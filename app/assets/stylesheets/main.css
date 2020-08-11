@@ -1,4 +1,4 @@
-html, body, div, nav, header, footer, ul, li, h1, h2, h3, h4, h5, h6, p {
+html, body, div, nav, header, footer, ul, li, label, input, textarea, button, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,9 +19,25 @@ a {
   font-weight: bold;
 }
 
+a:hover {
+  color: #222222;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   background-color: #F5F5F5;
   font-family: 'Poppins', sans-serif;
+  min-height: 100%;
+  position: relative;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 60px;
 }
 
 .nav_main {
@@ -55,8 +71,12 @@ body {
 }
 
 footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   height: 60px;
   background-color: #fff;
+  margin-top: 60px;
 }
 
 .footer_wrapper {
@@ -75,4 +95,90 @@ footer {
   float: right;
   display: inline-block;
   line-height: 60px;
+}
+
+/* ---------------------------------- FORM ---------------------------------- */
+
+form {
+  margin: 20px 0 20px 0;
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  background-color: #f0f0f0;
+  border: 0px;
+  height: 40px;
+  display: block;
+  width: 100%;
+  margin: 10px 0 20px 0;
+  padding: 0 15px;
+}
+
+textarea {
+  background-color: #f0f0f0;
+  border: 0px;
+  display: block;
+  width: 100%;
+  margin: 10px 0 20px 0;
+  padding: 15px;
+}
+
+select {
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 0;
+  margin-top: 10px;
+}
+
+.button_primary {
+  margin-top: 20px;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  padding: 20px;
+}
+
+.button_submit {
+  margin-top: 20px;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 200px;
+  padding: 0 15px;
+}
+
+.button_primary:hover,
+.button_submit:hover {
+  background-color: #222222;
+}
+
+.error_message {
+  color: #E44F4F;
+  margin-bottom: 15px;
+  /* background-color: #FEE4E4;
+  border: 1px solid #E44F4F;
+  padding: 15px 0px;
+  height: 40px;
+  line-height: 40px; */
+}
+
+.post_button {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 25px;
+  cursor: pointer;
+}
+
+.post_button:hover {
+  background-color: #222222;
+  color: #ffffff;
 }

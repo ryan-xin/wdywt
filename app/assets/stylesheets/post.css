@@ -1,3 +1,14 @@
+.center_wrapper {
+  width: 80%;
+  margin: 0 auto 60px;
+  background-color: #fff;
+  padding: 40px;
+}
+
+.back_button {
+  margin-bottom: 20px;
+}
+
 .post_image {
   max-width: 200px;
 }

@@ -11,7 +11,6 @@
   </head>
 
   <body>
-
     <nav class="nav_main">
       <div class="nav_main_wrapper">
         <div class="nav_left">
@@ -23,7 +22,7 @@
               <li>Hello, <%= @current_user.name %></li>
               <li><%= link_to "Setting", user_path(@current_user.id) %></li>
               <li><%= link_to "Logout", login_path, method: "delete" %></li>
-              <li><%= link_to "Post", new_post_path %></li>
+              <li><%= link_to "Post", new_post_path, class: "post_button" %></li>
             </ul>
           <% else %>
             <ul class="nav_menu">
@@ -45,11 +44,11 @@
         <div class="footer_right">
           <ul class="nav_menu">
             <li><p><%= link_to "LinkedIn", "https://www.linkedin.com/in/ryan-xin/" %></p></li>
-            <li><p><%= link_to "GitHub", new_user_path %></p></li>
+            <li><p><%= link_to "GitHub", "https://github.com/ryan-xin/wdywt" %></p></li>
           </ul>
         </div>
       </div>
     </footer>
-
+    
   </body>
 </html>

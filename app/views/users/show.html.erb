@@ -1,37 +1,40 @@
-<%= link_to 'Back', :back %>
+<div class="center_wrapper">
+  <p class="back_button"><%= link_to 'Back', :back %></p>
+  <div class="user_center_top">
+    <h1><%= @user.name %></h1>
+    <!--# helpers check_user_image -->
+    <div class="user_avatar">
+      <%= check_user_image_large(@user) %>
+    </div>
+    <% if @user.id == @current_user.id %>
+      <%= link_to "Edit Profile", edit_user_path(@user.id) %>
+    <% end %>
 
-<h1><%= @user.name %></h1>
+    <%= @user.bio %>
+  </div>
 
-<!--# helpers check_user_image -->
-<%= check_user_image_large(@user) %>
+  <%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %>
 
-<% if @user.id == @current_user.id %>
-  <%= link_to "Edit Profile", edit_user_path(@user.id) %>
-<% end %>
+  <%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %>
 
-<%= @user.bio %>
-
-<%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %>
-
-<%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %>
-
-<!-- # user.post -->
-<p>User Posts</p>
-<ul>
-  <% @user.posts.each do |post| %>
-    <li>
-      <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
-    </li>
-  <% end %>
-</ul>
-<!-- # user.lied.posts -->
-<% if @current_user.id == @user.id %>
-<p>Liked Posts</p>
+  <!-- # user.post -->
+  <p>User Posts</p>
   <ul>
-    <% @user.likes.each do |like| %>
+    <% @user.posts.each do |post| %>
       <li>
-        <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
+        <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
       </li>
     <% end %>
   </ul>
-<% end %>
+  <!-- # user.lied.posts -->
+  <% if @current_user.id == @user.id %>
+  <p>Liked Posts</p>
+    <ul>
+      <% @user.likes.each do |like| %>
+        <li>
+          <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

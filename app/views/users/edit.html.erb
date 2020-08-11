@@ -1,26 +1,29 @@
-<%= link_to 'Back', :back %>
+<div class="center_wrapper">
+  <p class="back_button"><%= link_to 'Back', :back %></p>
 
-<h2>Edit Profile</h2>
+  <h1>Edit Profile</h1>
 
+  <div class="form">
+    <%= form_for @user, html: {multipart: true} do |f| %>
 
-<%= form_for @user, html: {multipart: true} do |f| %>
+      <%= f.label :image, "Upload photo" %>
+      <!-- # <%= f.text_field :image %> -->
+      <%= f.cl_image_upload :image %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+      
+      <%= f.label :password_confirmation %>
+      <%= f.text_field :password_confirmation %>
+      
+      <%= f.label :bio %>
+      <%= f.text_area :bio, rows: "7" %>
 
-  <%= f.label :image, "Upload photo" %>
-  <!-- # <%= f.text_field :image %> -->
-  <%= f.cl_image_upload :image %>
-  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
-  
-  <%= f.label :bio %>
-  <%= f.text_field :bio %>
+      <%= f.submit "Update profile", class: "button_submit"  %>
 
-  <%= f.submit %>
-
-<% end %>
+    <% end %>
+  </div>
+</div>

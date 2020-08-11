@@ -1,0 +1,21 @@
+.login_wrapper {
+  width: 1170px;
+  margin: 0 auto;
+  background-color: #fff;
+  height: 670px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login_left {
+  flex: 1;
+  height: 100%;
+}
+
+.login_right {
+  flex: 1;
+  padding: 60px;
+  height: 100%;
+}

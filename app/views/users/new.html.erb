@@ -1,30 +1,40 @@
-<h2>Create an Account</h2>
+<div class="login_wrapper">
+  <div class="login_left">
+    <%= image_tag "login_image.png", alt: "Login Image", class: "login_image" %>
+  </div>
+  <div class="login_right">
+    <div class="h1">
+      <h1>Create an Account</h1>
+    </div>
+    <div class="form">
+      <%= form_for @user do |f| %>
 
-<%= form_for @user do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+        <%= f.label :password_confirmation, "Confirm password"  %>
+        <%= f.password_field :password_confirmation%>
+        
+        <%= f.submit "Sign Up", class: "button_primary" %>
+        
+      <% end %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
-  
-  <%= f.submit "Sign Up" %>
-  
-<% end %>
-
-<% if @user.errors.full_messages.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<p>Already have an account?</p>
-<%= link_to "Login", login_path %>
+      <div class="error_message">
+        <% if @user.errors.full_messages.any? %>
+          <ul>
+            <% @user.errors.full_messages.each do |error| %>
+              <li><strong><%= error %></strong></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <p>Already have an account? <%= link_to "Login", login_path %></p>
+  </div>
+</div>

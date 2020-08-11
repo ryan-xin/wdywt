@@ -11,7 +11,7 @@
   <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
 <% end %>
 
-<%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " like" : " likes" %><br>
+<%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " Like" : " Likes" %><br>
 
 <%= check_user_image_small(@post.user) %>
 <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>

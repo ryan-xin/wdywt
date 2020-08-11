@@ -48,6 +48,7 @@ body::after {
 }
 
 .nav_main_wrapper {
+  max-width: 1400px;
   width: 80%;
   margin: 0 auto;
   height: 80px;
@@ -80,6 +81,7 @@ footer {
 }
 
 .footer_wrapper {
+  max-width: 1400px;
   width: 80%;
   margin: 0 auto;
   height: 60px;

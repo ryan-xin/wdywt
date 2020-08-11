@@ -1,7 +1,7 @@
 <!-- <%= link_to 'Back', :back %> -->
 <a name="start"></a><br>
 
-<%= image_tag @post.image, alt: @post.description, class: "post_image" %><br>
+<%= cl_image_tag @post.image, alt: @post.description, class: "post_image" %><br>
 
 <!--# like -->
 <% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>

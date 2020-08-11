@@ -6,9 +6,9 @@
 <!--# like -->
 <% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
 <% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
-  <%= button_to "Unlike", post_like_path(@post.id, pre_liked.id), method: "delete" %>
+  <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.id), method: "delete"  %>
 <% else %>
-  <%= button_to "Like", post_likes_path(@post.id), method: "post" %>
+  <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
 <% end %>
 
 <%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " like" : " likes" %><br>

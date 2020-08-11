@@ -25,8 +25,5 @@ Rails.application.routes.draw do
 
   # COMMENT CRUD ----------------------------------------
   resources :comments
-
-  # LIKE -----------------------------------------------
- 
   
 end

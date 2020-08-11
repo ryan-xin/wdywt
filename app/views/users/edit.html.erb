@@ -2,10 +2,12 @@
 
 <h2>Edit Profile</h2>
 
-<%= form_for @user do |f| %>
 
-  <%= f.label :image %>
-  <%= f.text_field :image %>
+<%= form_for @user, html: {multipart: true} do |f| %>
+
+  <%= f.label :image, "Upload photo" %>
+  <!-- # <%= f.text_field :image %> -->
+  <%= f.cl_image_upload :image %>
   
   <%= f.label :name %>
   <%= f.text_field :name %>

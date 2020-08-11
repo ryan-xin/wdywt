@@ -16,7 +16,7 @@
       <%= post.created_at.strftime("%e %b %Y") %><br>
 
       <!--# post.image & description -->
-      <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
+      <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
 
       <!--# like -->
       <% pre_liked = post.likes.find { |like| like.user_id == @current_user.id} %>

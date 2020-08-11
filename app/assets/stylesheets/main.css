@@ -4,6 +4,75 @@ html, body, div, nav, header, footer, ul, li, h1, h2, h3, h4, h5, h6, p {
   box-sizing: border-box;
 }
 
+p {
+  font-size: 14px;
+}
+
 ul, li {
   text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+body {
+  background-color: #F5F5F5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav_main {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  margin-bottom: 60px;
+}
+
+.nav_main_wrapper {
+  width: 80%;
+  margin: 0 auto;
+  height: 80px;
+}
+
+.nav_left {
+  display: inline-block;
+  float: left;
+  margin-top: 20px;
+}
+
+.nav_right {
+  display: inline-block;
+  float: right;
+  line-height: 80px;
+}
+
+.nav_menu li {
+  display: inline-block;
+  padding-left: 15px;
+}
+
+footer {
+  height: 60px;
+  background-color: #fff;
+}
+
+.footer_wrapper {
+  width: 80%;
+  margin: 0 auto;
+  height: 60px;
+}
+
+.footer_left {
+  float: left;
+  display: inline-block;
+  line-height: 60px;
+}
+
+.footer_right {
+  float: right;
+  display: inline-block;
+  line-height: 60px;
 }

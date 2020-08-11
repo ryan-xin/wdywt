@@ -4,7 +4,7 @@ module ApplicationHelper
   # Used on posts#index and posts#show pages
   def check_user_image_small(user)
     if user.image.present?
-      image_tag user.image, class: "profile_image_small"
+      cl_image_tag user.image, class: "profile_image_small"
     else
       image_tag "avatar.png", class: "profile_image_small"
     end
@@ -13,7 +13,7 @@ module ApplicationHelper
   # Used on users#show page
   def check_user_image_large(user)
     if user.image.present?
-      image_tag user.image
+      cl_image_tag user.image
     else
       image_tag "avatar.png"
     end

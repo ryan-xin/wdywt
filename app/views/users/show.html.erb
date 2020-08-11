@@ -20,16 +20,18 @@
 <ul>
   <% @user.posts.each do |post| %>
     <li>
-      <%= link_to image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
+      <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
     </li>
   <% end %>
 </ul>
 <!-- # user.lied.posts -->
+<% if @current_user.id == @user.id %>
 <p>Liked Posts</p>
-<ul>
-  <% @user.likes.each do |like| %>
-    <li>
-      <%= link_to image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @user.likes.each do |like| %>
+      <li>
+        <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

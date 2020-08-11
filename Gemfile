@@ -56,3 +56,5 @@ gem 'pry-byebug'
 
 # Like & unlike function
 gem 'acts_as_favoritor'
+
+gem 'cloudinary'

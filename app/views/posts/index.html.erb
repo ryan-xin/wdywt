@@ -34,9 +34,9 @@
           <div class="post_item_interaction_left">
             <% pre_liked = post.likes.find { |like| like.user_id == @current_user.id} %>
             <% if Like.where(user_id: @current_user.id, post_id: post.id).exists? %>
-              <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(post.id, pre_liked.id), method: "delete"  %>
+              <%= link_to image_tag("icon_unlike.svg", alt: "Unlike"), post_like_path(post.id, pre_liked.id), method: "delete"  %>
             <% else %>
-              <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(post.id), method: "post" %>
+              <%= link_to image_tag("icon_like.svg", alt: "Like"), post_likes_path(post.id), method: "post" %>
             <% end %>
           </div>
           <div class="post_item_interaction_middle">
@@ -45,9 +45,9 @@
           <!--# save -->
           <div class="post_item_interaction_right">
             <% if @current_user.saved_posts.include? post %>
-              <%= link_to "Saved", post_safe_path(post.id, @current_user.id), method: "delete" %>
+              <%= link_to image_tag("icon_saved.svg", alt: "Unlike"), post_safe_path(post.id, @current_user.id), method: "delete" %>
             <% else %>
-              <%= link_to "Save", post_saves_path(post.id), method: "post" %>
+              <%= link_to image_tag("icon_save.svg", alt: "Unlike"), post_saves_path(post.id), method: "post" %>
             <% end %>
           </div>
 

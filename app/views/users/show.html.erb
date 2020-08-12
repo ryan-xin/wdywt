@@ -35,13 +35,26 @@
     </ul>
   </div>
   <p>like</p>
-  <!-- # user.lied.posts -->
+  <!-- # user.liked.posts -->
   <div class="user_post_list_wrapper">
     <ul>
       <% @user.likes.each do |like| %>
           <li>
             <div class="user_post_list_item">
             <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <p>save</p>
+  <!-- # user.saved.posts -->
+  <div class="user_post_list_wrapper">
+    <ul>
+      <% @user.saved_posts.each do |post| %>
+          <li>
+            <div class="user_post_list_item">
+            <%= link_to cl_image_tag(Post.find(post.id).image, alt: Post.find(post.id).description, class: "post_image"), post_path(post.id) %><br>
             </div>
           </li>
       <% end %>

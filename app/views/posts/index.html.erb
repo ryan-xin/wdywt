@@ -32,7 +32,6 @@
         <div class="post_item_interaction">
           <!--# like -->
           <div class="post_item_interaction_left">
-            <!--# -->
             <% pre_liked = post.likes.find { |like| like.user_id == @current_user.id} %>
             <% if Like.where(user_id: @current_user.id, post_id: post.id).exists? %>
               <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(post.id, pre_liked.id), method: "delete"  %>
@@ -43,6 +42,15 @@
           <div class="post_item_interaction_middle">
             <%= post.likes.count %><%= (post.likes.count) <= 1 ? " Like" : " Likes" %><br>
           </div>
+          <!--# save -->
+          <div class="post_item_interaction_right">
+            <% if @current_user.saved_posts.include? post %>
+              <%= link_to "Saved", post_safe_path(post.id, @current_user.id), method: "delete" %>
+            <% else %>
+              <%= link_to "Save", post_saves_path(post.id), method: "post" %>
+            <% end %>
+          </div>
+
         </div>
 
         <div class="post_item_description">

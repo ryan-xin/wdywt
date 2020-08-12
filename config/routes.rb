@@ -25,5 +25,8 @@ Rails.application.routes.draw do
 
   # COMMENT CRUD ----------------------------------------
   resources :comments
+
+  # FOLLOW CRUD
+  
   
 end

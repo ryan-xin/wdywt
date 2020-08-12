@@ -22,7 +22,7 @@
       <div class="post_item_header_middle">
         <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
       </div>
-      <div class="post_item_header_right">
+      <div class="post_item_header_right follow_button">
         Follow
       </div>
       <div class="divider"> </div>
@@ -49,18 +49,22 @@
       <%= @post.description %>
     </div>
 
+    <!-- # Comments -->
     <div class="post_item_comment_list">
-      <!-- # Comments -->
       <% @post.comments.each do |comment| %>
         <div class="post_item_comment_list_item">
-        <strong><%= comment.user.name %></strong>
-        <%= comment.content %><br>
-
-        <%= comment.created_at.strftime("%e %b %Y %l:%M %p") %>
-
-        <% if @current_user.id == comment.user_id %>
-          <%= link_to "Delete", comment_path(comment.id), method: "delete" %>
-        <% end %>
+          <strong><%= comment.user.name %></strong>
+          <%= comment.content %><br>
+          <div class="comment_edit">
+            <div class="comment_date">
+              <%= comment.created_at.strftime("%e %b %Y %l:%M %p") %>
+            </div>
+            <div class="comment_delete">
+              <% if @current_user.id == comment.user_id %>
+                <%= link_to "Delete", comment_path(comment.id), method: "delete" %>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>

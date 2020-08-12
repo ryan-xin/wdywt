@@ -1,48 +1,79 @@
-<!-- <%= link_to 'Back', :back %> -->
-<a name="start"></a><br>
+<div class="center_wrapper post_show_wrapper">
+  <!-- <%= link_to 'Back', :back %> -->
+  <a name="start"></a>
+  <div class="post_show_left">
+    <%= cl_image_tag @post.image, alt: @post.description, class: "post_image" %><br>
+    <%= @post.created_at.strftime("%e %b %Y %l:%M %p") %>
+    <div class="user_post_edit">
+      <!-- # If @current_user equals post user show "edit" & "delete" -->
+      <% if @current_user.id == @post.user_id %>
+        <%= link_to "Edit", edit_post_path(@post.id) %>
+        |
+        <%= link_to "Delete", post_path(@post.id), method: "delete" %>
+      <% end %>
+    </div>
+  </div>
 
-<%= cl_image_tag @post.image, alt: @post.description, class: "post_image" %><br>
+  <div class="post_show_right">
+    <div class="post_item_header post_show_header">
+      <div class="post_item_header_left">
+        <%= check_user_image_small(@post.user) %>
+      </div>
+      <div class="post_item_header_middle">
+        <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
+      </div>
+      <div class="post_item_header_right">
+        Follow
+      </div>
+      <div class="divider"> </div>
+      <br>
+    </div>
 
-<!--# like -->
-<% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
-<% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
-  <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.id), method: "delete"  %>
-<% else %>
-  <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
-<% end %>
+    <div class="post_item_interaction">
+      <!--# like -->
+      <div class="post_item_interaction_left">
+        <% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
+        <% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
+          <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.id), method: "delete"  %>
+        <% else %>
+          <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
+        <% end %>
+      </div>
+      <div class="post_item_interaction_middle">
+        <%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " Like" : " Likes" %><br>
+      </div>
+    </div>
 
-<%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " Like" : " Likes" %><br>
+    <div class="post_item_description">
+      <strong><%= @post.user.name %></strong>
+      <%= @post.description %>
+    </div>
 
-<%= check_user_image_small(@post.user) %>
-<strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
+    <div class="post_item_comment_list">
+      <!-- # Comments -->
+      <% @post.comments.each do |comment| %>
+        <div class="post_item_comment_list_item">
+        <strong><%= comment.user.name %></strong>
+        <%= comment.content %><br>
 
-<%= @post.created_at.strftime("%e %b %Y %l:%M %p") %><br>
+        <%= comment.created_at.strftime("%e %b %Y %l:%M %p") %>
 
-<strong><%= @post.user.name %></strong>
-<%= @post.description %><br>
+        <% if @current_user.id == comment.user_id %>
+          <%= link_to "Delete", comment_path(comment.id), method: "delete" %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
 
-<!-- # Comments -->
-<% @post.comments.each do |comment| %>
-  <strong><%= comment.user.name %></strong>
-  <%= comment.content %><br>
+    <div class="post_item_comment">
+      <a name="end"></a>
+      <!-- # Comment Field -->
+      <%= form_for @comment do |f| %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.text_area :content %>
+        <%= f.submit "Comment", class: "post_show_button" %>
+      <% end %>
+    </div>
 
-  <%= comment.created_at.strftime("%e %b %Y %l:%M %p") %><br>
-
-  <% if @current_user.id == comment.user_id %>
-    <%= link_to "Delete", comment_path(comment.id), method: "delete" %>
-  <% end %><br>
-<% end %>
-
-<a name="end"></a>
-<!-- # Comment Field -->
-<%= form_for @comment do |f| %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.text_field :content %>
-  <%= f.submit ("Comment") %>
-<% end %>
-
-<!-- # If @current_user equals post user show "edit" & "delete" -->
-<% if @current_user.id == @post.user_id %>
-  <%= link_to "Edit", edit_post_path(@post.id) %>
-  <%= link_to "Delete", post_path(@post.id), method: "delete" %>
-<% end %>
+  </div>
+</div>

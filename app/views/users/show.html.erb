@@ -6,11 +6,16 @@
     <div class="user_avatar">
       <%= check_user_image_large(@user) %>
     </div>
-    <% if @user.id == @current_user.id %>
-      <%= link_to "Edit Profile", edit_user_path(@user.id) %>
-    <% end %>
-
-    <%= @user.bio %>
+    <div class="user_bio">
+      <%= @user.bio %>
+    </div>
+    <div class="user_follow_edit">
+      <% if @user.id == @current_user.id %>
+        <%= link_to "Edit Profile", edit_user_path(@user.id) %>
+      <% else %>
+        Follow
+      <% end %>
+    </div>
   </div>
 
   <%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %>
@@ -18,23 +23,29 @@
   <%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %>
 
   <!-- # user.post -->
-  <p>User Posts</p>
-  <ul>
-    <% @user.posts.each do |post| %>
-      <li>
-        <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
-      </li>
-    <% end %>
-  </ul>
-  <!-- # user.lied.posts -->
-  <% if @current_user.id == @user.id %>
-  <p>Liked Posts</p>
+  <div class="user_post_list_wrapper">
     <ul>
-      <% @user.likes.each do |like| %>
-        <li>
-          <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
-        </li>
+      <% @user.posts.each do |post| %>
+          <li>
+            <div class="user_post_list_item">
+            <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
+            </div>
+          </li>
       <% end %>
     </ul>
-  <% end %>
+  </div>
+  <p>like</p>
+  <!-- # user.lied.posts -->
+  <div class="user_post_list_wrapper">
+    <ul>
+      <% @user.likes.each do |like| %>
+          <li>
+            <div class="user_post_list_item">
+            <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

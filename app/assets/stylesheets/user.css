@@ -3,4 +3,45 @@
 }
 .user_avatar {
   margin: 20px auto 10px;
+
+}
+
+.profile_image_small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile_image_large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.user_bio {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user_follow_edit {
+  margin: 20px 0;
+}
+
+.user_post_list_wrapper {
+  -webkit-columns: 300px;
+  -moz-columns: 300px;
+  column-width: 300px;
+  -webkit-column-gap: 1.5px;
+  -moz-column-gap: 1.5px;
+  column-gap: 1.5em;
+  width: 100%;
+}
+
+.user_post_list_item {
+  margin: 0 0 1.5em;
+  display: inline-block;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }

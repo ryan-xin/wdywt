@@ -13,7 +13,7 @@ module ApplicationHelper
   # Used on users#show page
   def check_user_image_large(user)
     if user.image.present?
-      cl_image_tag user.image
+      cl_image_tag user.image, class: "profile_image_large"
     else
       image_tag "avatar.png"
     end

@@ -1,7 +1,7 @@
 .center_wrapper {
   max-width: 1400px;
   width: 80%;
-  margin: 0 auto 60px;
+  margin: 120px auto 60px;
   background-color: #fff;
   padding: 40px;
 }
@@ -10,24 +10,26 @@
   margin-bottom: 20px;
 }
 
-.profile_image_small {
-  max-width: 30px;
-}
-
 .post_list_wrapper {
-	column-width: 320px;
-	column-gap: 20px;
-	width: 80%;
-	max-width: 1400px;
-	margin: 50px auto;
+  -webkit-columns: 400px;
+  -moz-columns: 400px;
+  column-width: 400px;
+  -webkit-column-gap: 1.5px;
+  -moz-column-gap: 1.5px;
+  column-gap: 1.5em;
+  width: 80%;
+  max-width: 1400px;
+  margin: 120px auto 50px;
 }
 
 .post_list_item {
-	background: #ffffff;
-	margin: 0 0 20px;
-	padding: 20px 20px 0;
-	display: inline-block;
-	column-break-inside: avoid;
+  background: #ffffff;
+  margin: 0 0 1.5em;
+  padding: 20px 20px 0;
+  display: inline-block;
+  -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+                 break-inside: avoid;
 }
 
 .post_item_header {
@@ -61,10 +63,12 @@
 .post_image {
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
 .post_item_interaction {
   height: 19px;
+  font-size: 14px;
 }
 
 .post_item_interaction_left {
@@ -82,7 +86,12 @@
 .post_item_description,
 .post_item_comment_list {
   margin: 10px 0;
-  line-height: 22px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.post_item_comment_list_item {
+  padding-bottom: 10px;
 }
 
 .post_item_comment_link {
@@ -108,4 +117,53 @@
   margin-top: 0;
   font-weight: bold;
   text-align: center;
+  border: 1px solid #000000;
+  background-color: #fff;
+}
+
+/* -------------------------------- POST SHOW ------------------------------- */
+
+.post_show_wrapper {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  overflow: auto;
+}
+
+.post_show_left {
+  flex: 2;
+  height: 100%;
+}
+
+.user_post_edit {
+  float: right;
+}
+
+.post_show_right {
+  flex: 1;
+  padding-left: 40px;
+  height: 100%;
+}
+
+.login_image {
+  object-fit: contain;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #cbcbcb;
+}
+
+.post_show_button {
+  border: 1px solid #000000;
+  background-color: #fff;
+}
+
+.post_item_interaction_left_show {
+  margin-top: 15px;
+}
+
+.post_show_header {
+  margin-bottom: 20px;
 }

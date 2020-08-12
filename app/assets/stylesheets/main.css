@@ -17,6 +17,7 @@ a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
+  cursor: pointer;
 }
 
 a:hover {
@@ -45,6 +46,9 @@ body::after {
   height: 80px;
   background-color: #fff;
   margin-bottom: 60px;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #F5F5F5;
 }
 
 .nav_main_wrapper {
@@ -145,7 +149,7 @@ select {
   font-weight: bold;
   cursor: pointer;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .button_submit {

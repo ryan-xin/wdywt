@@ -14,14 +14,15 @@ class CommentsController < ApplicationController
     last_action = url[:action]
     # Comment on show page stay at show page
     if last_action == "show"
+      flash[:error] = @comment.errors.full_messages.first
       redirect_to(request.referer + '#end')     
       # return
     else 
+      flash[:error] = @comment.errors.full_messages + [@comment.post_id]
       # Comment on index page stay at index page
       redirect_to(request.referer + '#' + params[:comment][:post_id])
+      # raise "hell"
     end
-    # raise "hell"
-    # TODO: Error message not showing
   end # create
 
   def index

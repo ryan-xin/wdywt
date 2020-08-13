@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create post_params
-    if params[:file].present?
+    if @post.persisted? && params[:file].present?
       # Actually forward upload file on to Cloudinary server
       response = Cloudinary::Uploader.upload params[:file]
       @post.image = response['public_id']
@@ -17,9 +17,7 @@ class PostsController < ApplicationController
       @current_user.posts << @post
       redirect_to(posts_path)
     else 
-      # TODO: Error message not showing
-      # raise "hell"
-      redirect_to(new_post_path)
+      render :new
     end
   end # create
 
@@ -48,7 +46,6 @@ class PostsController < ApplicationController
       redirect_to(posts_path)
       return
     end
-    # raise "hell"
     if params[:file].present?
       # Actually forward upload file on to Cloudinary server
       response = Cloudinary::Uploader.upload params[:file]
@@ -57,8 +54,7 @@ class PostsController < ApplicationController
       @post.update post_params
       redirect_to(post_path(params[:id]))
     else
-      # TODO: Error message not showing
-      # raise "hell"
+      flash[:error] = "Image can't be blank."
       redirect_to(edit_post_path(params[:id]))
     end
   end # update

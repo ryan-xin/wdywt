@@ -26,4 +26,10 @@
     <% end %>
   </div>
 
+  <div class="error_message">
+    <% if flash[:error] %>
+      <strong><%= flash[:error] %></strong>
+    <% end %>
+  </div>
+
 </div>

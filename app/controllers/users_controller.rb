@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to(root_path)
     else
-      # raise "hell"
       render :new
     end
   end # create
@@ -36,8 +35,6 @@ class UsersController < ApplicationController
       redirect_to(user_path(params[:id]))
       return
     end
-    # raise "hell"
-    # TODO: Error messages empty
     if params[:user][:name].present?
       if params[:file].present?
         # Actually forward upload file on to Cloudinary server
@@ -48,7 +45,8 @@ class UsersController < ApplicationController
       @user.update user_params_edit
       redirect_to(user_path(params[:id]))
     else
-      redirect_to(edit_user_path(params[:id]))
+      flash[:error] = "Name can't be blank."
+      redirect_to(edit_user_path(params[:id])) 
     end
   end # update
 

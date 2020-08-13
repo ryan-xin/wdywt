@@ -97,13 +97,9 @@
       <% end %>
 
       <div class="error_message">
-        <% if @comment.errors.full_messages.any? %>
-          <ul>
-            <% @comment.errors.full_messages.each do |error| %>
-              <li><strong><%= error %></strong></li>
-            <% end %>
-          </ul>
-        <% end %>
+      <% if flash[:error] %>
+        <strong><%= flash[:error] %></strong>
+      <% end %>
       </div>
 
     </div>

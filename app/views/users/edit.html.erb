@@ -21,13 +21,9 @@
   </div>
 
   <div class="error_message">
-    <% if @user.errors.full_messages.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |error| %>
-          <li><strong><%= error %></strong></li>
-        <% end %>
-      </ul>
-    <% end %>
+  <% if flash[:error] %>
+    <strong><%= flash[:error] %></strong>
+  <% end %>
   </div>
   
 </div>

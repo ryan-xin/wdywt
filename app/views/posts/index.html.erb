@@ -87,14 +87,11 @@
             <%= f.submit "Comment", class: "post_list_button post_item_comment_item"  %>
           <% end %>
         </div>
+
         <div class="error_message">
-          <% if @comment.errors.full_messages.any? %>
-            <ul>
-              <% @comment.errors.full_messages.each do |error| %>
-                <li><strong><%= error %></strong></li>
-              <% end %>
-            </ul>
-          <% end %>
+        <% if flash[:error] && post.id == flash[:error][1] %>
+          <strong><%= flash[:error][0] %></strong>
+        <% end %>
         </div>
         
       </li>

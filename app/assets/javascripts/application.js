@@ -19,13 +19,13 @@ $(document).ready(function () {
   console.log("jQuery")
 
   $('.user_center_tab ul li').click(function () {
-    let tab_id = $(this).attr('tab-number');
+    let tabId = $(this).attr('tab_number');
 
     $('.user_center_tab ul li').removeClass('link_current');
     $('.tab_content').removeClass('tab_current');
 
     $(this).addClass('link_current')
-    $('#' + tab_id).addClass('tab_current');
+    $('#' + tabId).addClass('tab_current');
 
   })
 

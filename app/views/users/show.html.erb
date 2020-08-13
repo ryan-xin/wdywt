@@ -20,11 +20,11 @@
   
   <div class="user_center_tab">
     <ul>
-      <li class="tab_link link_current" tab-number="tab_1"><%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %></li>
-      <li class="tab_link" tab-number="tab_2"><%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %></li>
-      <li class="tab_link" tab-number="tab_3"><%= @user.saved_posts.count %><%= (@user.saved_posts.count) <= 1 ? " Save" : " Saves" %></li>
-      <li class="tab_link" tab-number="tab_4"><%= @user.following.count %> following</li>
-      <li class="tab_link" tab-number="tab_5"><%= @user.followers.count %><%= (@user.followers.count) <= 1 ? " follower" : " followers" %></li>
+      <li class="tab_link link_current" tab_number="tab_1"><%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %></li>
+      <li class="tab_link" tab_number="tab_2"><%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %></li>
+      <li class="tab_link" tab_number="tab_3"><%= @user.saved_posts.count %><%= (@user.saved_posts.count) <= 1 ? " Save" : " Saves" %></li>
+      <li class="tab_link" tab_number="tab_4"><%= @user.following.count %> following</li>
+      <li class="tab_link" tab_number="tab_5"><%= @user.followers.count %><%= (@user.followers.count) <= 1 ? " follower" : " followers" %></li>
     </ul>
   </div>
 

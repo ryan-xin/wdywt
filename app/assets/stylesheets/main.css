@@ -151,6 +151,10 @@ select {
   margin-top: 10px;
 }
 
+.cloudinary-fileupload {
+  background-color: #fff;
+}
+
 .button_primary {
   margin-top: 20px;
   background-color: #000;
@@ -178,12 +182,9 @@ select {
 
 .error_message {
   color: #E44F4F;
-  margin-bottom: 15px;
-  /* background-color: #FEE4E4;
-  border: 1px solid #E44F4F;
-  padding: 15px 0px;
-  height: 40px;
-  line-height: 40px; */
+  margin-bottom: 10px;
+  font-size: 14px;
+  z-index: 90;
 }
 
 .post_button {

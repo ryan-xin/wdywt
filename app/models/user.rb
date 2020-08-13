@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :comments
   # Signup
   has_secure_password
-  validates :name, length: {minium: 4, maximum: 20}
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   # Like association
   has_many :likes, dependent: :destroy

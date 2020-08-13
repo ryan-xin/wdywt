@@ -9,19 +9,18 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create post_params
-    if @post.persisted?
-      if params[:file].present?
-        # Actually forward upload file on to Cloudinary server
-        response = Cloudinary::Uploader.upload params[:file]
-        @post.image = response['public_id']
-        @post.save
-      end
+    if params[:file].present?
+      # Actually forward upload file on to Cloudinary server
+      response = Cloudinary::Uploader.upload params[:file]
+      @post.image = response['public_id']
+      @post.save
       @current_user.posts << @post
       redirect_to(posts_path)
     else 
-      render :new
+      # TODO: Error message not showing
+      # raise "hell"
+      redirect_to(new_post_path)
     end
-  
   end # create
 
   # READ -------------------------------------------
@@ -49,14 +48,19 @@ class PostsController < ApplicationController
       redirect_to(posts_path)
       return
     end
+    # raise "hell"
     if params[:file].present?
       # Actually forward upload file on to Cloudinary server
       response = Cloudinary::Uploader.upload params[:file]
       @post.image = response['public_id']
       @post.save
+      @post.update post_params
+      redirect_to(post_path(params[:id]))
+    else
+      # TODO: Error message not showing
+      # raise "hell"
+      redirect_to(edit_post_path(params[:id]))
     end
-    @post.update post_params
-    redirect_to(post_path(params[:id]))
   end # update
 
   # DESTROY -------------------------------------------

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to(root_path)
     else
+      # raise "hell"
       render :new
     end
   end # create
@@ -35,15 +36,20 @@ class UsersController < ApplicationController
       redirect_to(user_path(params[:id]))
       return
     end
-    # Handle upload, if file was uploaded
-    if params[:file].present?
-      # Actually forward upload file on to Cloudinary server
-      response = Cloudinary::Uploader.upload params[:file]
-      @user.image = response['public_id']
-      @user.save
+    # raise "hell"
+    # TODO: Error messages empty
+    if params[:user][:name].present?
+      if params[:file].present?
+        # Actually forward upload file on to Cloudinary server
+        response = Cloudinary::Uploader.upload params[:file]
+        @user.image = response['public_id']
+        @user.save
+      end
+      @user.update user_params_edit
+      redirect_to(user_path(params[:id]))
+    else
+      redirect_to(edit_user_path(params[:id]))
     end
-    @user.update user_params_edit
-    redirect_to(user_path(params[:id]))    
   end # update
 
   def destroy

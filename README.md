@@ -8,7 +8,12 @@ WDYWT is my second project at General Assembly. It's built with Ruby on Rails, P
 
 Here is the live [website.](https://ryan-xin.github.io/tictactoe/)
 
-![Screenshot of the website:](https://raw.githubusercontent.com/ryan-xin/tictactoe/master/assets/tictacttoe_screenshot.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_01.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_02.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_03.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_04.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_05.png)
+![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_06.png)
 
 ### Main Features ###
 

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create post_params
-    if @post.persisted? && params[:file].present?
+    if params[:file].present?
       # Actually forward upload file on to Cloudinary server
       response = Cloudinary::Uploader.upload params[:file]
       @post.image = response['public_id']

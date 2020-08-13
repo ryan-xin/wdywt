@@ -23,6 +23,7 @@
         <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
       </div>
 
+      <% if @current_user.id != @post.user_id %>
       <div class="post_item_header_right follow_button">
         <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: @post.user_id) %>
         <% if pre_followed.exists? %>
@@ -31,6 +32,7 @@
           <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
         <% end %>
       </div>
+      <% end %>
       
       <div class="divider"> </div>
       <br>

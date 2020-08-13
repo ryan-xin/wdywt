@@ -20,7 +20,8 @@
           <% if @current_user.present? %>
             <ul class="nav_menu">
               <li>Hello, <%= @current_user.name %></li>
-              <li><%= link_to "Setting", user_path(@current_user.id) %></li>
+              <li><%= link_to "Explore", posts_path %></li>
+              <li><%= link_to "Profile", user_path(@current_user.id) %></li>
               <li><%= link_to "Logout", login_path, method: "delete" %></li>
               <li><%= link_to "Post", new_post_path, class: "post_button" %></li>
             </ul>

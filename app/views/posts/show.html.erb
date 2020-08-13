@@ -22,9 +22,16 @@
       <div class="post_item_header_middle">
         <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
       </div>
+
       <div class="post_item_header_right follow_button">
-        <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
+        <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: @post.user_id) %>
+        <% if pre_followed.exists? %>
+          <%= link_to "Unfollow", user_follow_path(@post.user_id, pre_followed.first.id), method: "delete" %>
+        <% else %>
+          <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
+        <% end %>
       </div>
+      
       <div class="divider"> </div>
       <br>
     </div>

@@ -67,18 +67,52 @@
   <p>following</p>
   <div class="user_following_list_wrapper">
     <ul>
-      <% @user.following.each do |f| %>
+      <% @user.following.each do |user| %>
         <li>
           <div class="post_item_header post_show_header">
             <div class="post_item_header_left">
-              <%= check_user_image_small(@post.user) %>
+              <%= check_user_image_large(user) %>
             </div>
             <div class="post_item_header_middle">
-              <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
+              <strong><%= link_to user.name, user_path(user.id) %></strong><br>
             </div>
             <div class="post_item_header_right follow_button">
-              <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
+              <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: user.id) %>
+              <% if pre_followed.exists? %>
+                <%= link_to "Unfollow", user_follow_path(user.id, pre_followed.first.id), method: "delete" %>
+              <% else %>
+                <%= link_to "Follow", user_follows_path(user.id), method: "post" %>
+              <% end %>
             </div>
+            <div class="divider"> </div>
+            <br>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <p>follower</p>
+  <div class="user_following_list_wrapper">
+    <ul>
+      <% @user.followers.each do |user| %>
+        <li>
+          <div class="post_item_header post_show_header">
+            <div class="post_item_header_left">
+              <%= check_user_image_large(user) %>
+            </div>
+            <div class="post_item_header_middle">
+              <strong><%= link_to user.name, user_path(user.id) %></strong><br>
+            </div>
+
+            <div class="post_item_header_right follow_button">
+              <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: user.id) %>
+              <% if pre_followed.exists? %>
+                <%= link_to "Unfollow", user_follow_path(user.id, pre_followed.first.id), method: "delete" %>
+              <% else %>
+                <%= link_to "Follow", user_follows_path(user.id), method: "post" %>
+              <% end %>
+            </div>
+
             <div class="divider"> </div>
             <br>
           </div>

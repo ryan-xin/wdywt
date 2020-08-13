@@ -58,3 +58,5 @@ gem 'pry-byebug'
 gem 'acts_as_favoritor'
 
 gem 'cloudinary'
+
+gem 'jquery-rails'

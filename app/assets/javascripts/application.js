@@ -10,5 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+
+$(document).ready(function () {
+
+  console.log("jQuery")
+
+  $('.user_center_tab ul li').click(function () {
+    let tab_id = $(this).attr('tab-number');
+
+    $('.user_center_tab ul li').removeClass('link_current');
+    $('.tab_content').removeClass('tab_current');
+
+    $(this).addClass('link_current')
+    $('#' + tab_id).addClass('tab_current');
+
+  })
+
+});

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # get "/home" => "pages#home"
 
   # Session Routes -------------------------------------------
-  
   # Login Form
   get "/login" => "session#new"
   # Login Form submits here, do authentication & create session
@@ -28,7 +27,5 @@ Rails.application.routes.draw do
   # COMMENT CRUD ----------------------------------------
   resources :comments
 
-  # FOLLOW CRUD
-  
 
 end

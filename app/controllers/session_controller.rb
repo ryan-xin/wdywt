@@ -12,7 +12,7 @@ class SessionController < ApplicationController
     if user.present? && user.authenticate(params[:password])
       # Create session
       session[:user_id] = user.id 
-      redirect_to(posts_path)
+      redirect_to(root_path)
     else 
       # If user doesn't exist or password invalid
       flash[:error] = "Invalid email or password."

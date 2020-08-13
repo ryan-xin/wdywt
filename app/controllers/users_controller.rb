@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     # Check if the creation was successful
     if @user.persisted?
       session[:user_id] = @user.id 
-      redirect_to(posts_path)
+      redirect_to(root_path)
     else
       render :new
     end

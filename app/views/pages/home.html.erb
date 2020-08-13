@@ -1,2 +1,99 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="post_list_wrapper">
+
+  <ul>
+    <% @posts.each do |post| %>
+      <% if @current_user.following.include? post.user %>
+      <div class="post_list_item">
+      <li>
+        <div class="post_item_header">
+          <!--# Adding comment anchoring point -->
+          <a name="<%= post.id %>"></a>
+          <div class="post_item_header_left">
+            <!--# helpers check_user_image -->
+            <%= check_user_image_small(post.user) %>
+            <!--# post.user.name -->
+          </div>
+          <div class="post_item_header_middle">
+            <strong><%= link_to post.user.name, user_path(post.user_id) %></strong>
+          </div>
+          <div class="post_item_header_right">
+            <!--# post.created date -->
+            <%= post.created_at.strftime("%e %b") %><br>
+          </div>
+        </div>
+
+        <div class="post_item_image">
+          <!--# post.image & description -->
+          <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
+          <div class="brand_tag">
+            <%= post.brand %>
+          </div>
+        </div>
+
+        <div class="post_item_interaction">
+          <!--# like -->
+          <div class="post_item_interaction_left">
+            <!--# <% pre_liked = post.likes.find { |like| like.user_id == @current_user.id} %> -->
+            <% pre_liked = Like.where(user_id: @current_user.id, post_id: post.id) %>
+            <% if Like.where(user_id: @current_user.id, post_id: post.id).exists? %>
+              <%= link_to image_tag("icon_unlike.svg", alt: "Unlike"), post_like_path(post.id, pre_liked.first.id), method: "delete"  %>
+            <% else %>
+              <%= link_to image_tag("icon_like.svg", alt: "Like"), post_likes_path(post.id), method: "post" %>
+            <% end %>
+          </div>
+          <div class="post_item_interaction_middle">
+            <%= post.likes.count %><%= (post.likes.count) <= 1 ? " Like" : " Likes" %><br>
+          </div>
+          <!--# save -->
+          <div class="post_item_interaction_right">
+            <% if @current_user.saved_posts.include? post %>
+              <%= link_to image_tag("icon_saved.svg", alt: "Unlike"), post_safe_path(post.id, @current_user.id), method: "delete" %>
+            <% else %>
+              <%= link_to image_tag("icon_save.svg", alt: "Unlike"), post_saves_path(post.id), method: "post" %>
+            <% end %>
+          </div>
+
+        </div>
+
+        <div class="post_item_description">
+          <!--# description -->
+          <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+          <%= post.description %><br>
+        </div>
+
+        <div class="post_item_comment_link">
+        <!--# post.comments.link -->
+        <% if post.comments.count >= 1 %>
+          <%= link_to "View all #{post.comments.count} comments", post_path(post.id) %><br>
+        <% end %>
+        </div>
+
+        <div class="post_item_comment_list">
+          <% if post.comments.first.present? %>
+            <strong><%= post.comments.first.user.name %></strong>
+            <%= post.comments.first.content %><br>
+          <% end %>
+
+          <% if post.comments.last.present? && post.comments.count > 1 %>
+            <strong><%= post.comments.last.user.name %></strong>
+            <%= post.comments.last.content %>
+          <% end %>
+        </div>
+
+        <div class="post_item_comment">
+          <!-- # Comment Field -->
+          <%= form_for @comment do |f| %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :content, class: "post_list_input post_item_comment_item" %>
+            <%= f.submit "Comment", class: "post_list_button post_item_comment_item"  %>
+          <% end %>
+        </div>
+      </li>
+      </div>
+      <% end %>
+    <% end %>
+  </ul>
+
+
+
+</div>

@@ -41,6 +41,10 @@ body::after {
   height: 60px;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .nav_main {
   width: 100%;
   height: 80px;

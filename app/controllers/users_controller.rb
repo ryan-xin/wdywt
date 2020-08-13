@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params # Strong params
-
+    
     # Check if the creation was successful
     if @user.persisted?
       session[:user_id] = @user.id 

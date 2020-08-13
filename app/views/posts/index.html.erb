@@ -79,14 +79,24 @@
           <% end %>
         </div>
 
+        <!-- # Comment Field -->
         <div class="post_item_comment">
-          <!-- # Comment Field -->
           <%= form_for @comment do |f| %>
             <%= f.hidden_field :post_id, value: post.id %>
             <%= f.text_field :content, class: "post_list_input post_item_comment_item" %>
             <%= f.submit "Comment", class: "post_list_button post_item_comment_item"  %>
           <% end %>
+          <div class="error_message">
+            <% if @comment.errors.full_messages.any? %>
+              <ul>
+                <% @comment.errors.full_messages.each do |error| %>
+                  <li><strong><%= error %></strong></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
         </div>
+        
 
       </li>
       </div>

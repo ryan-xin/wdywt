@@ -15,4 +15,15 @@
     <%= f.submit nil, class: "button_submit" %>
 
   <% end %>
+
+  <div class="error_message">
+    <% if @post.errors.full_messages.any? %>
+      <ul>
+        <% @post.errors.full_messages.each do |error| %>
+          <li><strong><%= error %></strong></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
 </div>

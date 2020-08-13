@@ -6,9 +6,6 @@
     <div class="user_avatar">
       <%= check_user_image_large(@user) %>
     </div>
-    <div class="user_bio">
-      <%= @user.bio %>
-    </div>
     <div class="user_follow_edit">
       <% if @user.id == @current_user.id %>
         <%= link_to "Edit Profile", edit_user_path(@user.id) %>
@@ -16,11 +13,18 @@
         Follow
       <% end %>
     </div>
+    <div class="user_bio">
+      <%= @user.bio %>
+    </div>
   </div>
-
-  <%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %>
-
-  <%= @user.likes.count %><%= (@user.likes.count) <= 1 ? " Like" : " Likes" %>
+  
+  <div class="user_status">
+    <%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %>
+    |
+    <%= link_to @user.following.count %> following
+    |
+    <%= link_to @user.followers.count %><%= (@user.followers.count) <= 1 ? " follower" : " followers" %>
+  </div>
 
   <!-- # user.post -->
   <div class="user_post_list_wrapper">
@@ -57,6 +61,28 @@
             <%= link_to cl_image_tag(Post.find(post.id).image, alt: Post.find(post.id).description, class: "post_image"), post_path(post.id) %><br>
             </div>
           </li>
+      <% end %>
+    </ul>
+  </div>
+  <p>following</p>
+  <div class="user_following_list_wrapper">
+    <ul>
+      <% @user.following.each do |f| %>
+        <li>
+          <div class="post_item_header post_show_header">
+            <div class="post_item_header_left">
+              <%= check_user_image_small(@post.user) %>
+            </div>
+            <div class="post_item_header_middle">
+              <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
+            </div>
+            <div class="post_item_header_right follow_button">
+              <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
+            </div>
+            <div class="divider"> </div>
+            <br>
+          </div>
+        </li>
       <% end %>
     </ul>
   </div>

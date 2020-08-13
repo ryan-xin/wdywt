@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   delete "/login" => "session#destroy"
   
   # USER CRUD -------------------------------------------
-  resources :users # Create users route
-
+  resources :users do
+    resources :follows
+  end
+  
   # POST CRUD -------------------------------------------
   resources :posts do
     resources :likes
@@ -29,7 +31,4 @@ Rails.application.routes.draw do
   # FOLLOW CRUD
   
 
-  # SAVE CRUD
-  
-  
 end

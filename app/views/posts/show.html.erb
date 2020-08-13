@@ -23,7 +23,7 @@
         <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
       </div>
       <div class="post_item_header_right follow_button">
-        Follow
+        <%= link_to "Follow", user_follows_path(@post.user_id), method: "post" %>
       </div>
       <div class="divider"> </div>
       <br>
@@ -32,9 +32,10 @@
     <div class="post_item_interaction">
       <!--# like -->
       <div class="post_item_interaction_left">
-        <% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %>
+        <!-- #<% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %> -->
+        <% pre_liked = Like.where(user_id: @current_user.id, post_id: @post.id) %>
         <% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
-          <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.id), method: "delete"  %>
+          <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.first.id), method: "delete"  %>
         <% else %>
           <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
         <% end %>

@@ -69,7 +69,7 @@
 
     <!-- # Comments -->
     <div class="post_item_comment_list">
-      <% @post.comments.each do |comment| %>
+      <% @post.comments.order("created_at").each do |comment| %>
         <div class="post_item_comment_list_item">
           <strong><%= comment.user.name %></strong>
           <%= comment.content %><br>
@@ -105,7 +105,7 @@
           </ul>
         <% end %>
       </div>
-      
+
     </div>
 
   </div>

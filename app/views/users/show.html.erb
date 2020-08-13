@@ -38,7 +38,7 @@
   <!-- # user.post -->
   <div id="tab_1" class="user_post_list_wrapper tab_content tab_current">
     <ul>
-      <% @user.posts.each do |post| %>
+      <% @user.posts.order("created_at").each do |post| %>
           <li>
             <div class="user_post_list_item">
             <%= link_to cl_image_tag(post.image, alt: post.description, class: "post_image"), post_path(post.id) %><br>
@@ -51,7 +51,7 @@
   <!-- # user.liked.posts -->
   <div id="tab_2" class="user_post_list_wrapper tab_content">
     <ul>
-      <% @user.likes.each do |like| %>
+      <% @user.likes.order("created_at").each do |like| %>
           <li>
             <div class="user_post_list_item">
             <%= link_to cl_image_tag(Post.find(like.post_id).image, alt: Post.find(like.post_id).description, class: "post_image"), post_path(like.post_id) %><br>
@@ -64,7 +64,7 @@
   <!-- # user.saved.posts -->
   <div id="tab_3" class="user_post_list_wrapper tab_content">
     <ul>
-      <% @user.saved_posts.each do |post| %>
+      <% @user.saved_posts.order("created_at").each do |post| %>
           <li>
             <div class="user_post_list_item">
             <%= link_to cl_image_tag(Post.find(post.id).image, alt: Post.find(post.id).description, class: "post_image"), post_path(post.id) %><br>

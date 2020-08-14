@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "/following" => "pages#following"
-  # get "/home" => "pages#home"
 
   # Session Routes -------------------------------------------
   # Login Form
@@ -16,17 +15,18 @@ Rails.application.routes.draw do
   
   # USER CRUD -------------------------------------------
   resources :users do
-    resources :follows
+    # Nested routes get user id in URL
+    resources :follows 
   end
 
   # POST CRUD -------------------------------------------
   resources :posts do
+    # Nested routes get post id in URL
     resources :likes
     resources :saves
   end
 
   # COMMENT CRUD ----------------------------------------
   resources :comments
-
 
 end

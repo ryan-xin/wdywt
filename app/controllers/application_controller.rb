@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   
   before_action :fetch_user
 
-  # GET USER -------------------------------------------
+  # GET CURRENT USER --------------------------------------
   def fetch_user
     # If user_id in session is the ID in database, get @current_user object
     if session[:user_id].present?
@@ -17,6 +17,5 @@ class ApplicationController < ActionController::Base
     # If not logged in redirect to login page
     redirect_to(login_path) unless @current_user.present?
   end # check_if_logged_in
-
 
 end

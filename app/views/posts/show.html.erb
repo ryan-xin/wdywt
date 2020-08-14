@@ -1,11 +1,12 @@
 <div class="center_wrapper post_show_wrapper">
-  <!-- <%= link_to 'Back', :back %> -->
+  <!-- Adding comment anchoring point -->
   <a name="start"></a>
+  <!-- Left Image -->
   <div class="post_show_left">
     <%= cl_image_tag @post.image, alt: @post.description, class: "post_image" %><br>
     <%= @post.created_at.strftime("%e %b %Y %l:%M %p") %>
     <div class="user_post_edit">
-      <!-- # If @current_user equals post user show "edit" & "delete" -->
+      <!-- If @current_user equals post user show "edit" & "delete" -->
       <% if @current_user.id == @post.user_id %>
         <%= link_to "Edit", edit_post_path(@post.id) %>
         |
@@ -14,6 +15,7 @@
     </div>
   </div>
 
+  <!-- Right content -->
   <div class="post_show_right">
     <div class="post_item_header post_show_header">
       <div class="post_item_header_left">
@@ -22,7 +24,7 @@
       <div class="post_item_header_middle">
         <strong><%= link_to @post.user.name, user_path(@post.user_id) %></strong><br>
       </div>
-
+      <!-- Show follow when it's not user himself -->
       <% if @current_user.id != @post.user_id %>
       <div class="post_item_header_right follow_button">
         <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: @post.user_id) %>
@@ -33,17 +35,16 @@
         <% end %>
       </div>
       <% end %>
-      
       <div class="divider"> </div>
       <br>
     </div>
 
+    <!-- like -->
     <div class="post_item_interaction">
-      <!--# like -->
       <div class="post_item_interaction_left">
-        <!-- #<% pre_liked = @post.likes.find { |like| like.user_id == @current_user.id} %> -->
         <% pre_liked = Like.where(user_id: @current_user.id, post_id: @post.id) %>
-        <% if Like.where(user_id: @current_user.id, post_id: @post.id).exists? %>
+        <!-- If user has liked this post -->
+        <% if pre_liked.exists? %>
           <%= link_to image_tag("icon_unlike.svg", alt: "Unlike", class: "like_unlike_icon"), post_like_path(@post.id, pre_liked.first.id), method: "delete"  %>
         <% else %>
           <%= link_to image_tag("icon_like.svg", alt: "Like", class: "like_unlike_icon"), post_likes_path(@post.id), method: "post" %>
@@ -52,7 +53,7 @@
       <div class="post_item_interaction_middle">
         <%= @post.likes.count %><%= (@post.likes.count) <= 1 ? " Like" : " Likes" %><br>
       </div>
-      <!--# save -->
+      <!-- save -->
       <div class="post_item_interaction_right">
         <% if @current_user.saved_posts.include? @post %>
           <%= link_to image_tag("icon_saved.svg", alt: "Unlike"), post_safe_path(@post.id, @current_user.id), method: "delete" %>
@@ -67,7 +68,7 @@
       <%= @post.description %>
     </div>
 
-    <!-- # Comments -->
+    <!-- Comments -->
     <div class="post_item_comment_list">
       <% @post.comments.order("created_at").each do |comment| %>
         <div class="post_item_comment_list_item">
@@ -87,22 +88,19 @@
       <% end %>
     </div>
 
+    <!-- Comment Field -->
     <div class="post_item_comment">
       <a name="end"></a>
-      <!-- # Comment Field -->
       <%= form_for @comment do |f| %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.text_area :content %>
         <%= f.submit "Comment", class: "post_show_button" %>
       <% end %>
-
       <div class="error_message">
       <% if flash[:error] %>
         <strong><%= flash[:error] %></strong>
       <% end %>
       </div>
-
     </div>
-
   </div>
 </div>

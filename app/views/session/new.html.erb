@@ -6,27 +6,21 @@
     <div class="h1">
       <h1>Login to WDYWT</h1>
     </div>
-    <!-- # Use form-tag when not interacting with model -->
+    <!-- Use form-tag when not interacting with model -->
     <div class="form">
       <%= form_tag login_path do %>
-
         <%= label_tag :email %>
         <%= email_field_tag :email %>
-
         <%= label_tag :password %>
         <%= password_field_tag :password %>
-
         <%= submit_tag "Login", class: "button_primary" %>
-
       <% end %>
-
       <div class="error_message">
       <% if flash[:error] %>
         <strong><%= flash[:error] %></strong>
       <% end %>
       </div>
     </div>
-
     <p>Don't have an account? <%= link_to "Signup", new_user_path %></p>
   </div>
 </div>

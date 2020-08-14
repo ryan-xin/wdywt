@@ -1,29 +1,20 @@
 <div class="center_wrapper">
   <p class="back_button"><%= link_to 'Back', :back %></p>
-
   <h1>Edit Profile</h1>
-
   <div class="form">
     <%= form_for @user, html: {multipart: true} do |f| %>
-
       <%= f.label :image, "Upload photo" %>
-      <!-- # <%= f.text_field :image %> -->
       <%= f.cl_image_upload :image %>
-      
       <%= f.label :name %>
       <%= f.text_field :name %>
-      
       <%= f.label :bio %>
       <%= f.text_area :bio, rows: "7" %>
-
       <%= f.submit "Update profile", class: "button_submit"  %>
     <% end %>
   </div>
-
   <div class="error_message">
   <% if flash[:error] %>
     <strong><%= flash[:error] %></strong>
   <% end %>
   </div>
-  
 </div>

@@ -1,10 +1,8 @@
 class CommentsController < ApplicationController
 
-  def new
-  end
-
   def create
     @comment = Comment.create comment_params
+    # If @comment exists, assign to @current_user
     if @comment.persisted?
       @current_user.comments << @comment
     end
@@ -14,28 +12,17 @@ class CommentsController < ApplicationController
     last_action = url[:action]
     # Comment on show page stay at show page
     if last_action == "show"
+      # Save error message and send to template
       flash[:error] = @comment.errors.full_messages.first
       redirect_to(request.referer + '#end')     
       # return
-    else 
+    else
+      # Save error message and @comment.post_id send to template. Tells the template where to show the error message
       flash[:error] = @comment.errors.full_messages + [@comment.post_id]
       # Comment on index page stay at index page
       redirect_to(request.referer + '#' + params[:comment][:post_id])
-      # raise "hell"
     end
   end # create
-
-  def index
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
 
   def destroy
     comment = Comment.find params[:id]

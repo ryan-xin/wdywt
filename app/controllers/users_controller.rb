@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params # Strong params
-    
     # Check if the creation was successful
     if @user.persisted?
       session[:user_id] = @user.id 
@@ -17,13 +16,12 @@ class UsersController < ApplicationController
     end
   end # create
 
-  def index
-  end
-
+  # READ -------------------------------------------
   def show
     @user = User.find params[:id]
   end # show
-    
+  
+  # UPDATE -------------------------------------------
   def edit
     @user = User.find params[:id]
   end # edit
@@ -35,6 +33,7 @@ class UsersController < ApplicationController
       redirect_to(user_path(params[:id]))
       return
     end
+    # Check if :name field is empty or not
     if params[:user][:name].present?
       if params[:file].present?
         # Actually forward upload file on to Cloudinary server
@@ -45,21 +44,20 @@ class UsersController < ApplicationController
       @user.update user_params_edit
       redirect_to(user_path(params[:id]))
     else
+      # Save error message and send to template
       flash[:error] = "Name can't be blank."
       redirect_to(edit_user_path(params[:id])) 
     end
   end # update
 
-  def destroy
-  end
-
-
   private
 
+  # For user account create
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end # user_params
 
+  # For user profile edit
   def user_params_edit
     params.require(:user).permit(:image, :name, :email, :password, :password_confirmation, :bio)
   end # user_params_edit

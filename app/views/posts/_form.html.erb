@@ -1,21 +1,14 @@
-
 <div class="form">
   <%= form_for @post, html: {multipart: true} do |f| %>
-    
     <%= f.label :image, "Upload image" %>
-    <!-- <%= f.text_field :image %> -->
     <%= f.cl_image_upload :image %>
-    
     <%= f.label :description, "Add description" %>
     <%= f.text_area :description, rows: "7" %>
-    
     <%= f.label :brand, "Select brand" %>
     <%= f.select :brand, [["Li-Ning", "Li-Ning"], ["Air Jordan", "Air Jordan"], ["Nike","Nike"], ["Adidas", "Adidas"], ["Reebok", "Reebod"], ["Converse", "Converse"], ["Others", "Others"]] %>
-
     <%= f.submit nil, class: "button_submit" %>
-
   <% end %>
-
+  <!-- post create error message -->
   <div class="error_message">
     <% if @post.errors.full_messages.any? %>
       <ul>
@@ -25,11 +18,10 @@
       </ul>
     <% end %>
   </div>
-
+  <!-- post update error message -->
   <div class="error_message">
     <% if flash[:error] %>
       <strong><%= flash[:error] %></strong>
     <% end %>
   </div>
-
 </div>

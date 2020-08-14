@@ -1,9 +1,5 @@
 class SessionController < ApplicationController
 
-  # Login Form Page -------------------------------------------
-  def new
-  end
-
   # Login submits here ----------------------------------------
   def create
     # Check if the user exists

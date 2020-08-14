@@ -16,17 +16,15 @@
 
 $(document).ready(function () {
 
-  console.log("jQuery")
-
   $('.user_center_tab ul li').click(function () {
+    // Get the index number from the li
     let number = $(this).attr('tab_number');
-
+    // Remove all 'current' class
     $('.user_center_tab ul li').removeClass('link_current');
     $('.tab_content').removeClass('tab_current');
-
+    // Add 'current' class to the selected li and show the relative block
     $(this).addClass('link_current')
     $('#' + number).addClass('tab_current');
-
   })
 
 });

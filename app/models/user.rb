@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  # Post association
   has_many :posts
+  # Comment association
   has_many :comments
   # Signup
   has_secure_password

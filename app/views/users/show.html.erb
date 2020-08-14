@@ -1,11 +1,13 @@
 <div class="center_wrapper">
   <p class="back_button"><%= link_to 'Back', :back %></p>
+  <!-- header -->
   <div class="user_center_top">
     <h1><%= @user.name %></h1>
-    <!--# helpers check_user_image -->
+    <!-- helpers check_user_image -->
     <div class="user_avatar">
       <%= check_user_image_large(@user) %>
     </div>
+    <!-- Show edit when user on his own profile; show follow when on other's profile -->
     <div class="user_follow_edit">
       <% if @user.id == @current_user.id %>
         <%= link_to "Edit Profile", edit_user_path(@user.id) %>
@@ -24,7 +26,7 @@
       <%= @user.bio %>
     </div>
   </div>
-  
+  <!-- tab-->
   <div class="user_center_tab">
     <ul>
       <li class="tab_link link_current" tab_number="tab_1"><%= @user.posts.count %><%= (@user.posts.count) <= 1 ? " Post" : " Posts" %></li>
@@ -36,8 +38,7 @@
       <li class="tab_link" tab_number="tab_5"><%= @user.followers.count %><%= (@user.followers.count) <= 1 ? " follower" : " followers" %></li>
     </ul>
   </div>
-
-  <!-- # user.post -->
+  <!-- user.post -->
   <div id="tab_1" class="user_post_list_wrapper tab_content tab_current">
     <ul>
       <% @user.posts.order("created_at").each do |post| %>
@@ -49,8 +50,7 @@
       <% end %>
     </ul>
   </div>
-
-  <!-- # user.liked.posts -->
+  <!-- user.liked.posts -->
   <div id="tab_2" class="user_post_list_wrapper tab_content">
     <ul>
       <% @user.likes.order("created_at").each do |like| %>
@@ -62,8 +62,7 @@
       <% end %>
     </ul>
   </div>
-
-  <!-- # user.saved.posts -->
+  <!-- user.saved.posts -->
   <div id="tab_3" class="user_post_list_wrapper tab_content">
     <ul>
       <% @user.saved_posts.order("created_at").each do |post| %>
@@ -75,7 +74,7 @@
       <% end %>
     </ul>
   </div>
-
+  <!-- user.following -->
   <div id="tab_4" class="user_following_list_wrapper tab_content">
     <ul>
       <% @user.following.each do |user| %>
@@ -103,7 +102,7 @@
       <% end %>
     </ul>
   </div>
-
+  <!-- user.followers -->
   <div id="tab_5" class="user_following_list_wrapper tab_content">
     <ul>
       <% @user.followers.each do |user| %>
@@ -115,6 +114,7 @@
             <div class="user_follow_list_middle">
               <strong><%= link_to user.name, user_path(user.id) %></strong><br>
             </div>
+            <!-- show follow when it's not user himself -->
             <% if @current_user.id != user.id %>
               <div class="user_follow_list_right follow_button">
                 <% pre_followed = Follow.where(follower_id: @current_user.id, followed_id: user.id) %>

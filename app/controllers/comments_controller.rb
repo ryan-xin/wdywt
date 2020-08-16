@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       @current_user.comments << @comment
     end
     # Check if comment on post index or post show page
-    # HTTP referral header: the previous visted URL
+    # HTTP referral header: the pre-visted URL
     url = Rails.application.routes.recognize_path(request.referer)
     last_action = url[:action]
     # Comment on show page stay at show page
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     else
       # Save error message and @comment.post_id send to template. Tells the template where to show the error message
       flash[:error] = @comment.errors.full_messages + [@comment.post_id]
-      # Comment on index page stay at index page
+      # Comment on index page stay at index page and position to the post
       redirect_to(request.referer + '#' + params[:comment][:post_id])
     end
   end # create

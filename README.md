@@ -6,7 +6,7 @@ WDYWT is a social media platform for sneakerheads to share what sneakers they we
 
 WDYWT is my second project at General Assembly. It's built with Ruby on Rails, PostgreSQL, ActiveRecord, Heroku, HTML, CSS, JavaScript, jQuery and some ruby libraries.
 
-Here is the live [website.](https://ryan-xin.github.io/tictactoe/)
+Here is the live [website.](https://https://agile-temple-21861.herokuapp.com/posts)
 
 ![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_01.png)
 ![Screenshot of the website:](https://github.com/ryan-xin/wdywt/blob/master/app/assets/images/wdywt_02.png)
@@ -29,10 +29,8 @@ Here is the live [website.](https://ryan-xin.github.io/tictactoe/)
 * In user center check all following and followers;
 * Edit profile.
 
-
 ### Unfixed Bugs ###
 
-* Post edit, comment create, user edit validation error message not showing;
 * Navigation is not mobile-responsive currently.
 
 ### Tech Used ###

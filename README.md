@@ -37,7 +37,7 @@ Here is the live [website.](https://agile-temple-21861.herokuapp.com/posts)
 
 Ruby on Rails; ActiveRecord; Heroku; HTML; CSS; JavaScript; jQuery.
 
-### Acknowledgements ###
+### Objectives ###
 
 * COC - Convention Over Configuration;
 * DRY - Don't Repeat Yourself;

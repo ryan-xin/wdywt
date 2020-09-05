@@ -41,6 +41,7 @@ class UsersController < ApplicationController
         @user.image = response['public_id']
         @user.save
       end
+      raise "hell"
       @user.update user_params_edit
       redirect_to(user_path(params[:id]))
     else

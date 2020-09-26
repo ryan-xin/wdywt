@@ -25,7 +25,7 @@ Here is the live [website.](https://wdywt-ryan.herokuapp.com)
 * Save post on index page and show page;
 * Follow or followed by other users;
 * Only check posts from following users;
-* In user center check all posts, lided posts and saved posts;
+* In user center check all posts, liked posts and saved posts;
 * In user center check all following and followers;
 * Edit profile.
 
@@ -41,6 +41,6 @@ Ruby on Rails; ActiveRecord; Heroku; HTML; CSS; JavaScript; jQuery.
 
 * COC - Convention Over Configuration;
 * DRY - Don't Repeat Yourself;
-* MVC - Model, View and Controller is hard to understand at first. Several files need to be edited at the same time. Still need more practive;
+* MVC - Model, View and Controller is hard to understand at first. Several files need to be edited at the same time. Still need more practice;
 * I created several models in this project(User, Post, Comment, Like, Follow), which is a good opportunity to learn CRUD;
 * I only use Cloudinary for image upload in this project. It worth doing more research on this platform and using it in the next project. 

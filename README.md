@@ -4,7 +4,7 @@
 
 WDYWT is a social media platform for sneakerheads to share what sneakers they wear everyday. I use Instagram as the reference. There are many similar features on this web app.
 
-WDYWT is my second project at General Assembly. It's built with Ruby on Rails, PostgreSQL, ActiveRecord, Heroku, HTML, CSS, JavaScript, jQuery and some ruby libraries.
+WDYWT is my second project at General Assembly. It's built with Ruby on Rails, PostgreSQL, HTML, CSS, JavaScript, jQuery and some ruby libraries.
 
 Here is the live [website.](https://wdywt-ryan.herokuapp.com)
 

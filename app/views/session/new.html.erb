@@ -10,9 +10,9 @@
     <div class="form">
       <%= form_tag login_path do %>
         <%= label_tag :email %>
-        <%= email_field_tag :email %>
+        <%= email_field_tag :email, "ryan@ga.co" %>
         <%= label_tag :password %>
-        <%= password_field_tag :password %>
+        <%= password_field_tag :password, "chicken" %>
         <%= submit_tag "Login", class: "button_primary" %>
       <% end %>
       <div class="error_message">

@@ -75,7 +75,7 @@ puts "Created #{Comment.count} comments."
 User.destroy_all
 
 u1 = User.create!(
-  email: "xinpf0715@gmail.com",
+  email: "ryan@ga.co",
   password: "chicken",
   name: "Ryan"
 )
